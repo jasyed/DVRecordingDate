@@ -15,6 +15,7 @@ Gets the recording date and time of the first frame from raw DV files. Optionall
 This code was written to address the problem [Imported iMovie HD project clips have incorrect capture date](http://discussions.apple.com/thread.jspa?threadID=1344628) in iMovie 08.
 
 To import with a correct recording date, iMovie 08 uses the following naming convention for DV clips:
+
     clip-2008-07-28 09;30;00.dv
 
 This is also described at [How to change the date for DV event footage](http://imovie08.blogspot.com/2007/09/how-to-change-date-for-dv-event-footage.html).
@@ -22,20 +23,25 @@ This is also described at [How to change the date for DV event footage](http://i
 ## Options
 
 -h \-\-help
+
 > Print this help page
 
 -rename
+
 > In addition to displaying the recording date, rename each file with its recording date and time as required by iMovie 08. If the Mac OS X Developer Tools are installed, the file creation date for the file is set to the recording date.
 
 ## Usage
 
 First, check that this program can correctly read date information from the input DV files. In a terminal window type:
+
     java DVRecordingDate MyiMovieHDproject.iMovieProject/Media/*.dv
+
 and the recording dates of the project's DV files should be displayed. If this program cannot read the date information, error messages will be displayed.
 
 To rename the files (and if the developer tools are installed, change the file creation dates), use the -rename option. NB: Only work on a copy of the `.dv` files from an iMovie project as renaming a project's DV files will break it.
 
 When iMovie 08 is not running, the `.dv` files can be imported directly into the iMovie events folder thus:
+
     mkdir ~/Movies/iMovie\ Events.localized/MyEventName
     cp MyiMovieHDproject.iMovieProject/Media/*.dv ~/Movies/iMovie\ Events.localized/MyEventName/
     java DVRecordingDate -rename ~/Movies/iMovie\ Events.localized/MyEventName/*.dv
